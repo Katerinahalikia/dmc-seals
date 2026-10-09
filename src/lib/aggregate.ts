@@ -1,3 +1,4 @@
+import { fetchStudentData } from "./student-data.functions";
 export type ManifestEntry = { student: string; appUrl: string; dataApi: string };
 export type Exhibit = {
   id: string;
@@ -56,7 +57,7 @@ export function resolveUrl(src: string | undefined, base: string): string | unde
 
 async function loadStudentJson(dataApi: string): Promise<unknown> {
   if (/^https?:\/\//i.test(dataApi)) {
-    const { fetchStudentData } = await import("./student-data.functions");
+
     const res = await fetchStudentData({ data: { url: dataApi } });
     if (!res.ok) throw new Error(res.error);
     return JSON.parse(res.json);
