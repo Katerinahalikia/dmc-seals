@@ -23,7 +23,7 @@ const TABS: { key: ImgKey; label: string }[] = [
   { key: "livingScene", label: "AI Living Scene" },
 ];
 
-function Img({ src, alt, className }: { src?: string; alt: string; className?: string }) {
+function Img({ src, alt, className }: { src?: string | undefined; alt: string; className?: string }) {
   if (!src) return <div className={`flex items-center justify-center bg-muted text-xs text-muted-foreground ${className}`}>Δεν υπάρχει εικόνα</div>;
   return <img src={src} alt={alt} loading="lazy" className={`object-cover ${className}`} />;
 }

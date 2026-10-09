@@ -6,8 +6,8 @@ export type Exhibit = {
   material: string;
   period: string;
   origin: string;
-  sourceUrl?: string;
-  images: { original?: string; photorealistic?: string; livingScene?: string };
+  sourceUrl?: string | undefined;
+  images: { original?: string | undefined; photorealistic?: string | undefined; livingScene?: string | undefined };
   studentName: string;
   appTitle: string;
   appUrl: string;
