@@ -1,4 +1,4 @@
-import { createFileRoute } from "@tanstack/react-router";
+import { createFileRoute, Link } from "@tanstack/react-router";
 import { useEffect, useMemo, useState } from "react";
 import { aggregate, type Exhibit, type Failure } from "@/lib/aggregate";
 
@@ -67,7 +67,7 @@ function Index() {
       <header className="relative overflow-hidden border-b border-border">
         <div className="absolute inset-0 bg-[image:var(--gradient-hero)]" />
         <div className="relative mx-auto max-w-6xl px-6 py-20 text-center">
-          <p className="text-xs uppercase tracking-[0.35em] text-primary">Master Exhibition Portal</p>
+          <p className="text-xs uppercase tracking-[0.35em] text-primary">Master Exhibition Portal · <Link to="/specs" className="underline">Προδιαγραφές JSON</Link></p>
           <h1 className="mt-4 font-display text-4xl leading-tight md:text-6xl">Συλλογικό Ψηφιακό Μουσείο<br />Μυκηναϊκών Σφραγιδόλιθων</h1>
           <div className="mt-10 flex flex-wrap justify-center gap-px overflow-hidden rounded-lg border border-border bg-border">
             {[[collections, "Συλλογές"], [exhibits.length, "Συνολικά Εκθέματα"], [students.length, "Δημιουργοί"]].map(([n, l]) => (
