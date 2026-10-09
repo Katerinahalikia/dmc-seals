@@ -16,7 +16,7 @@ export type Exhibit = {
 };
 export type Failure = { student: string; reason: string };
 
-export const MANIFEST_URL = import.meta.env.VITE_MANIFEST_URL || "/manifest.json";
+export const MANIFEST_URL = import.meta.env['VITE_MANIFEST_URL'] || "/manifest.json";
 
 /* eslint-disable @typescript-eslint/no-explicit-any */
 export function normalize(entry: ManifestEntry, data: any): Exhibit[] {
@@ -58,7 +58,7 @@ export async function aggregate(manifestUrl = MANIFEST_URL) {
   const failures: Failure[] = [];
   results.forEach((r, i) => {
     if (r.status === "fulfilled") exhibits.push(...r.value);
-    else failures.push({ student: manifest[i].student, reason: String(r.reason?.message ?? r.reason) });
+    else failures.push({ student: manifest[i]?.student ?? '?', reason: String(r.reason?.message ?? r.reason) });
   });
   return { manifest, exhibits, failures, collections: manifest.length - failures.length };
 }
