@@ -1,0 +1,5 @@
+{ "appTitle": "Λέοντες των Μυκηνών", "appDescription": "Αφηγηματική εμπειρία γύρω από το μοτίβο του λέοντα στη μυκηναϊκή γλυπτική.", "conceptType": "Storytelling",
+  "exhibits": [
+    { "id": "m1", "title": "Φακοειδής σφραγιδόλιθος με λέοντα", "description": "Σφραγιδόλιθος από σάρδιο με εγχάρακτο βαδίζοντα λέοντα. Ύστερη Εποχή του Χαλκού.", "material": "Σάρδιος", "period": "ΥΕ ΙΙ", "origin": "Μυκήνες", "sourceUrl": "https://arachne.dainst.org/", "images": { "original": "/demo/original.jpg", "photorealistic": "/demo/photoreal.jpg", "livingScene": "/demo/scene.jpg" } },
+    { "id": "m2", "title": "Σφραγιδόλιθος με ταύρο", "description": "Ίασπις με ανάγλυφο ταύρο σε χρυσό δακτύλιο.", "material": "Ίασπις", "period": "ΥΕ ΙΙΙΑ", "origin": "Πύλος", "sourceUrl": "https://arachne.dainst.org/", "images": { "original": "/demo/photoreal.jpg", "photorealistic": "/demo/original.jpg", "livingScene": "/demo/scene.jpg" } }
+  ] }

@@ -1,0 +1,4 @@
+{ "appTitle": "Ζωντανές Σκηνές", "appDescription": "Η AI ζωντανεύει τις σκηνές κυνηγιού των σφραγιδόλιθων.", "conceptType": "AI Reconstruction",
+  "exhibits": [
+    { "id": "g1", "title": "Σκηνή κυνηγιού λέοντος", "description": "Στεατίτης με παράσταση κυνηγού που αντιμετωπίζει λέοντα.", "material": "Στεατίτης", "period": "ΥΕ Ι", "origin": "Μυκήνες", "sourceUrl": "https://arachne.dainst.org/", "images": { "original": "/demo/scene.jpg", "photorealistic": "/demo/photoreal.jpg", "livingScene": "/demo/scene.jpg" } }
+  ] }

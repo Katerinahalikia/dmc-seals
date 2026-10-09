@@ -1,0 +1,5 @@
+[
+  { "student": "Μαρία Παπαδοπούλου", "appUrl": "https://example.com/maria", "dataApi": "/demo/maria.json" },
+  { "student": "Γιώργος Νικολάου", "appUrl": "https://example.com/giorgos", "dataApi": "/demo/giorgos.json" },
+  { "student": "Ελένη Κωστά", "appUrl": "https://example.com/eleni", "dataApi": "https://invalid.example.invalid/data.json" }
+]
