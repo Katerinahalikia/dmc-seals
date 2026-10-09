@@ -43,15 +43,50 @@ export function normalize(entry: ManifestEntry, data: any): Exhibit[] {
   }));
 }
 
+/** Turn image paths like "/images/x.jpg" into absolute URLs on the student's site. */
+export function resolveUrl(src: string | undefined, base: string): string | undefined {
+  if (!src) return src;
+  if (/^(https?:|data:|blob:)/i.test(src)) return src;
+  try {
+    return new URL(src, base).toString();
+  } catch {
+    return src;
+  }
+}
+
+async function loadStudentJson(dataApi: string): Promise<unknown> {
+  if (/^https?:\/\//i.test(dataApi)) {
+    const { fetchStudentData } = await import("./student-data.functions");
+    const res = await fetchStudentData({ data: { url: dataApi } });
+    if (!res.ok) throw new Error(res.error);
+    return JSON.parse(res.json);
+  }
+  const r = await fetch(dataApi);
+  if (!r.ok) throw new Error(`HTTP ${r.status}`);
+  return r.json();
+}
+
 export async function aggregate(manifestUrl = MANIFEST_URL) {
   const res = await fetch(manifestUrl);
   if (!res.ok) throw new Error(`Αποτυχία φόρτωσης manifest (${res.status})`);
   const manifest: ManifestEntry[] = await res.json();
   const results = await Promise.allSettled(
     manifest.map(async (m) => {
-      const r = await fetch(m.dataApi);
-      if (!r.ok) throw new Error(`HTTP ${r.status}`);
-      return normalize(m, await r.json());
+      const json = await loadStudentJson(m.dataApi);
+      const isRemote = /^https?:\/\//i.test(m.dataApi);
+      const base = isRemote ? m.dataApi : m.appUrl;
+      return normalize(m, json).map((e) =>
+        isRemote
+          ? {
+              ...e,
+              images: {
+                original: resolveUrl(e.images.original, base),
+                photorealistic: resolveUrl(e.images.photorealistic, base),
+                livingScene: resolveUrl(e.images.livingScene, base),
+              },
+            }
+          : e,
+      );
     }),
   );
   const exhibits: Exhibit[] = [];
